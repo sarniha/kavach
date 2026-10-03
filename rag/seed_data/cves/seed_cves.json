@@ -1,0 +1,88 @@
+[
+  {
+    "cve_id": "CVE-2021-44228",
+    "description": "Apache Log4j2 JNDI features used in configuration, log messages, and parameters do not protect against attacker controlled LDAP and other JNDI related endpoints. An attacker who can control log messages or log message parameters can execute arbitrary code loaded from LDAP servers.",
+    "cvss_score": 10.0,
+    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+    "cwe": "CWE-502",
+    "published_date": "2021-12-10T10:15:00Z",
+    "modified_date": "2023-04-03T16:15:00Z",
+    "kev_flag": true,
+    "affected_products": [
+      {
+        "vendor": "apache",
+        "product": "log4j",
+        "version_range": ">=2.0-beta9, <=2.14.1"
+      }
+    ],
+    "references": [
+      "https://nvd.nist.gov/vuln/detail/CVE-2021-44228",
+      "https://cisa.gov/known-exploited-vulnerabilities-catalog"
+    ]
+  },
+  {
+    "cve_id": "CVE-2021-41773",
+    "description": "A flaw was found in a change made to path normalization in Apache HTTP Server 2.4.49. An attacker could use a path traversal attack to map URLs to files outside the directories configured by Alias-like directives. If files outside of these directories are not protected by the usual default configuration, these requests can succeed.",
+    "cvss_score": 7.5,
+    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:N/A:N",
+    "cwe": "CWE-22",
+    "published_date": "2021-10-05T11:15:00Z",
+    "modified_date": "2022-11-09T18:15:00Z",
+    "kev_flag": true,
+    "affected_products": [
+      {
+        "vendor": "apache",
+        "product": "http_server",
+        "version": "2.4.49"
+      },
+      {
+        "vendor": "apache",
+        "product": "apache",
+        "version": "2.4.49"
+      }
+    ],
+    "references": [
+      "https://nvd.nist.gov/vuln/detail/CVE-2021-41773"
+    ]
+  },
+  {
+    "cve_id": "CVE-2022-22965",
+    "description": "A Spring MVC or Spring WebFlux application running on JDK 9+ may be vulnerable to remote code execution (RCE) via data binding. The specific exploit requires the application to run on Tomcat as a WAR deployment.",
+    "cvss_score": 9.8,
+    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H",
+    "cwe": "CWE-94",
+    "published_date": "2022-04-01T23:15:00Z",
+    "modified_date": "2022-05-13T16:15:00Z",
+    "kev_flag": true,
+    "affected_products": [
+      {
+        "vendor": "vmware",
+        "product": "spring_framework",
+        "version_range": ">=5.3.0, <=5.3.17"
+      }
+    ],
+    "references": [
+      "https://tanzu.vmware.com/security/cve-2022-22965"
+    ]
+  },
+  {
+    "cve_id": "CVE-2020-1472",
+    "description": "An elevation of privilege vulnerability exists when an attacker establishes a vulnerable Netlogon secure channel connection to a domain controller, using the Netlogon Remote Protocol (MS-NRPC), aka 'Netlogon Elevation of Privilege Vulnerability' (Zerologon).",
+    "cvss_score": 10.0,
+    "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:C/C:H/I:H/A:H",
+    "cwe": "CWE-330",
+    "published_date": "2020-08-17T19:15:00Z",
+    "modified_date": "2022-04-28T18:15:00Z",
+    "kev_flag": true,
+    "affected_products": [
+      {
+        "vendor": "microsoft",
+        "product": "windows_server",
+        "version": "2019"
+      }
+    ],
+    "references": [
+      "https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2020-1472"
+    ]
+  }
+]

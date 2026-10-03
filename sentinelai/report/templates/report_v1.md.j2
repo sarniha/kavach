@@ -1,0 +1,83 @@
+# Incident Investigation Report: {{ report.incident_id }}
+
+**Generated:** {{ generated_at }}  
+**Risk Level:** {{ risk_level | upper }}  
+**Overall Confidence:** {{ "%.2f"|format(report.overall_confidence) }}  
+**Investigation Status:** {% if report.overall_confidence < 0.60 or report.limitations %}LOW CONFIDENCE / RESTRICTED{% else %}RESOLVED (EVIDENCE SUPPORTED){% endif %}
+
+{% if report.overall_confidence < 0.60 or report.limitations %}
+---
+> [!WARNING]
+> ### ⚠️ Investigation Limitations & Confidence Alert
+> **Overall Confidence:** {{ "%.2f"|format(report.overall_confidence) }}
+{% for lim in report.limitations %}
+> - {{ lim }}
+{% endfor %}
+---
+{% endif %}
+
+## 1. Executive Summary
+{{ report.executive_summary }}
+
+## 2. Root Cause Analysis
+{{ report.root_cause }}
+
+## 3. MITRE ATT&CK Mapping
+{% if report.mitre_mapping %}
+| Technique ID | Technique Name | Supporting Findings |
+|---|---|---|
+{% for m in report.mitre_mapping %}
+| `{{ m.technique_id }}` | {{ m.name }} | {% for fid in m.supporting_finding_ids %}`{{ fid }}`{% if not loop.last %}, {% endif %}{% endfor %} |
+{% endfor %}
+{% else %}
+*No MITRE techniques mapped to supported findings.*
+{% endif %}
+
+## 4. Incident Timeline
+{% if report.timeline %}
+| Timestamp (UTC) | Description | Event IDs | MITRE Tactic |
+|---|---|---|---|
+{% for t in report.timeline %}
+| {{ t.timestamp.strftime('%Y-%m-%d %H:%M:%S') if t.timestamp.strftime is defined else t.timestamp }} | {{ t.description }} | `{{ t.event_ids | join(', ') }}` | {{ t.mitre_tactic or 'N/A' }} |
+{% endfor %}
+{% else %}
+*No chronological events recorded.*
+{% endif %}
+
+## 5. Validated Findings (Supported & Weak)
+{% if report.findings %}
+| Finding ID | Agent | Verdict | Conf. | Claim | Reasoning |
+|---|---|---|---|---|---|
+{% for f in report.findings %}
+| `{{ f.finding_id }}` | `{{ f.agent }}` | **{{ f.verdict.value | upper }}** | {{ "%.2f"|format(f.confidence) }} | {{ f.claim }} | {{ f.reasoning }} |
+{% endfor %}
+{% else %}
+*No supported findings identified during this investigation.*
+{% endif %}
+
+## 6. Evidence Index
+*Mapping of validated findings to concrete log event identifiers:*
+
+| Finding ID | Verdict | Event IDs (Direct Evidence) |
+|---|---|---|
+{% for f in report.findings %}
+| `{{ f.finding_id }}` | {{ f.verdict.value }} | {% for eid in f.evidence_event_ids %}`{{ eid }}`{% if not loop.last %}, {% endif %}{% endfor %} |
+{% endfor %}
+
+## 7. Remediation Recommendations
+{% if report.recommendations %}
+{% for r in report.recommendations %}
+{{ loop.index }}. {{ r }}
+{% endfor %}
+{% else %}
+- Continue routine monitoring; verify account activity with user.
+{% endif %}
+
+---
+
+## 8. Audit & Trace Summary
+- **Agents Run:** {{ report.trace_summary.get('agents_run', []) | join(', ') }}
+- **Validation Loops Used:** {{ report.trace_summary.get('loops_used', 0) }}
+- **Total Tool Calls:** {{ report.trace_summary.get('tool_calls', 0) }}
+- **Investigation Duration:** {{ report.trace_summary.get('duration_seconds', 0.0) }}s
+- **Total Estimated Tokens:** {{ report.trace_summary.get('total_tokens', 0) }}

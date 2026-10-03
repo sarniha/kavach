@@ -1,0 +1,123 @@
+[
+  {
+    "technique_id": "T1110",
+    "name": "Brute Force",
+    "description": "Adversaries may use brute force techniques to attempt credential access by systematically guessing passwords or cryptographic keys.",
+    "tactics": ["Credential Access"],
+    "platforms": ["Linux", "macOS", "Windows", "Office 365", "SaaS"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Monitor authentication logs for high volumes of failed login events from a single source.",
+    "url": "https://attack.mitre.org/techniques/T1110"
+  },
+  {
+    "technique_id": "T1110.001",
+    "name": "Password Guessing",
+    "description": "Adversaries may systematically guess the password of an account without prior knowledge of system passwords to gain access.",
+    "tactics": ["Credential Access"],
+    "platforms": ["Linux", "macOS", "Windows", "Office 365"],
+    "is_subtechnique": true,
+    "parent_id": "T1110",
+    "detection": "Repeated failed authentication attempts against a single user account from an external or internal source.",
+    "url": "https://attack.mitre.org/techniques/T1110/001"
+  },
+  {
+    "technique_id": "T1110.003",
+    "name": "Password Spraying",
+    "description": "Adversaries may use a single or small list of commonly used passwords against many different accounts to avoid account lockout thresholds.",
+    "tactics": ["Credential Access"],
+    "platforms": ["Linux", "macOS", "Windows", "Office 365", "Azure AD"],
+    "is_subtechnique": true,
+    "parent_id": "T1110",
+    "detection": "Failure events across multiple distinct user accounts from one IP or small CIDR block within a narrow timeframe.",
+    "url": "https://attack.mitre.org/techniques/T1110/003"
+  },
+  {
+    "technique_id": "T1110.004",
+    "name": "Credential Stuffing",
+    "description": "Adversaries may use credentials obtained from external breach dumps to gain unauthorized access to target enterprise portals.",
+    "tactics": ["Credential Access"],
+    "platforms": ["Linux", "macOS", "Windows", "SaaS"],
+    "is_subtechnique": true,
+    "parent_id": "T1110",
+    "detection": "Distributed login attempts across numerous user accounts originating from residential proxies.",
+    "url": "https://attack.mitre.org/techniques/T1110/004"
+  },
+  {
+    "technique_id": "T1078",
+    "name": "Valid Accounts",
+    "description": "Adversaries may obtain and abuse credentials of existing accounts as a means of gaining Initial Access, Persistence, Privilege Escalation, or Defense Evasion.",
+    "tactics": ["Defense Evasion", "Persistence", "Privilege Escalation", "Initial Access"],
+    "platforms": ["Linux", "macOS", "Windows", "AWS", "GCP", "Azure"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Inspect unexpected geographic logins, login times outside normal work hours, or unusual access patterns for specific users.",
+    "url": "https://attack.mitre.org/techniques/T1078"
+  },
+  {
+    "technique_id": "T1098",
+    "name": "Account Manipulation",
+    "description": "Adversaries may manipulate accounts to maintain access to victim systems, such as modifying credentials, group memberships, or account permissions.",
+    "tactics": ["Persistence"],
+    "platforms": ["Linux", "macOS", "Windows", "Active Directory"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Audit event IDs for group membership changes (e.g. Event ID 4728/4732 in Windows Security logs).",
+    "url": "https://attack.mitre.org/techniques/T1098"
+  },
+  {
+    "technique_id": "T1548",
+    "name": "Abuse Elevation Control Mechanism",
+    "description": "Adversaries may circumvent mechanisms designed to control elevation of privileges to gain higher-level permissions on systems.",
+    "tactics": ["Privilege Escalation", "Defense Evasion"],
+    "platforms": ["Linux", "macOS", "Windows"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Monitor process execution for high integrity levels launched from lower integrity parents.",
+    "url": "https://attack.mitre.org/techniques/T1548"
+  },
+  {
+    "technique_id": "T1548.002",
+    "name": "Bypass User Account Control",
+    "description": "Adversaries may bypass Windows User Account Control (UAC) to run processes with elevated system rights without prompting user consent.",
+    "tactics": ["Privilege Escalation", "Defense Evasion"],
+    "platforms": ["Windows"],
+    "is_subtechnique": true,
+    "parent_id": "T1548",
+    "detection": "Track registry modifications under HKCU\\Software\\Classes\\ms-settings or auto-elevating binaries.",
+    "url": "https://attack.mitre.org/techniques/T1548/002"
+  },
+  {
+    "technique_id": "T1021",
+    "name": "Remote Services",
+    "description": "Adversaries may use valid accounts to log into a service that is designed to accept remote connections, such as RDP, SSH, or SMB.",
+    "tactics": ["Lateral Movement"],
+    "platforms": ["Linux", "macOS", "Windows"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Correlate network connection logs on ports 22, 3389, and 445 with user session logins across internal workstations.",
+    "url": "https://attack.mitre.org/techniques/T1021"
+  },
+  {
+    "technique_id": "T1041",
+    "name": "Exfiltration Over C2 Channel",
+    "description": "Adversaries may steal data by transferring it through the existing command and control channel rather than initiating a separate communication pathway.",
+    "tactics": ["Exfiltration"],
+    "platforms": ["Linux", "macOS", "Windows"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Monitor network flow metrics for unexpected increases in outbound traffic to established C2 endpoints.",
+    "url": "https://attack.mitre.org/techniques/T1041"
+  },
+  {
+    "technique_id": "T1566",
+    "name": "Phishing",
+    "description": "Adversaries may send phishing messages to gain access to victim systems by enticing victims to click links or execute attachments.",
+    "tactics": ["Initial Access"],
+    "platforms": ["Linux", "macOS", "Windows", "Office 365"],
+    "is_subtechnique": false,
+    "parent_id": null,
+    "detection": "Email gateway inspection for malicious URLs, SPF/DKIM validation failures, and suspicious macro-enabled documents.",
+    "url": "https://attack.mitre.org/techniques/T1566"
+  }
+]

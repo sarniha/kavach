@@ -1,0 +1,79 @@
+[
+  {
+    "ioc_type": "ip",
+    "value": "192.0.2.10",
+    "source": "abuse.ch",
+    "first_seen": "2024-01-01T00:00:00Z",
+    "last_seen": "2024-06-01T12:00:00Z",
+    "confidence": 0.95,
+    "tags": ["scanner", "brute_force", "threatfox"],
+    "malware_family": "Cobalt Strike",
+    "reference_url": "https://threatfox.abuse.ch/ioc/192.0.2.10"
+  },
+  {
+    "ioc_type": "ip",
+    "value": "192.0.2.50",
+    "source": "feodo_tracker",
+    "first_seen": "2024-02-15T08:00:00Z",
+    "last_seen": "2024-06-02T10:00:00Z",
+    "confidence": 0.90,
+    "tags": ["botnet", "c2", "feodo"],
+    "malware_family": "Feodo",
+    "reference_url": "https://feodotracker.abuse.ch"
+  },
+  {
+    "ioc_type": "ip",
+    "value": "203.0.113.5",
+    "source": "threatfox",
+    "first_seen": "2024-03-10T14:30:00Z",
+    "last_seen": "2024-06-05T09:00:00Z",
+    "confidence": 0.85,
+    "tags": ["c2", "rat"],
+    "malware_family": "AsyncRAT",
+    "reference_url": "https://threatfox.abuse.ch/ioc/203.0.113.5"
+  },
+  {
+    "ioc_type": "domain",
+    "value": "evil-scanner[.]example[.]com",
+    "source": "urlhaus",
+    "first_seen": "2024-01-10T11:00:00Z",
+    "last_seen": "2024-05-20T18:00:00Z",
+    "confidence": 0.90,
+    "tags": ["phishing", "scanner"],
+    "malware_family": null,
+    "reference_url": "https://urlhaus.abuse.ch"
+  },
+  {
+    "ioc_type": "url",
+    "value": "hxxp://malicious[.]example[.]com/login/auth",
+    "source": "urlhaus",
+    "first_seen": "2024-04-01T10:00:00Z",
+    "last_seen": "2024-05-30T16:00:00Z",
+    "confidence": 0.92,
+    "tags": ["credential_harvesting"],
+    "malware_family": null,
+    "reference_url": "https://urlhaus.abuse.ch"
+  },
+  {
+    "ioc_type": "hash_md5",
+    "value": "44d88612fea8a8f36de82e1278abb02f",
+    "source": "malware_bazaar",
+    "first_seen": "2023-01-01T00:00:00Z",
+    "last_seen": "2024-01-01T00:00:00Z",
+    "confidence": 1.0,
+    "tags": ["eicar", "test_file"],
+    "malware_family": "EICAR-Test",
+    "reference_url": "https://bazaar.abuse.ch/sample/44d88612fea8a8f36de82e1278abb02f"
+  },
+  {
+    "ioc_type": "hash_sha256",
+    "value": "275a021bbfb6489e54d471899f7db9d1663fc695ec2fe2a2c4538aabf651fd0f",
+    "source": "malware_bazaar",
+    "first_seen": "2023-05-01T00:00:00Z",
+    "last_seen": "2024-02-01T00:00:00Z",
+    "confidence": 1.0,
+    "tags": ["eicar", "test_file"],
+    "malware_family": "EICAR-Test",
+    "reference_url": "https://bazaar.abuse.ch"
+  }
+]

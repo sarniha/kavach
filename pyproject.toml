@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "sentinelai"
+version = "0.1.0"
+description = "SentinelAI — Multi-agent autonomous SOC investigation tier"
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "MIT" }
+
+dependencies = [
+    # Core schemas & config
+    "pydantic>=2.7,<3",
+    "pydantic-settings>=2.3,<3",
+    "pytz",
+    # Orchestration
+    "langgraph>=0.2,<1",
+    "langchain-core>=0.2,<1",
+    # LLM providers (optional at runtime, required for type-checking)
+    "groq>=0.9,<1",               # Groq Cloud SDK
+    "httpx>=0.27",                # used by groq + ollama clients
+    # Data layer
+    "duckdb>=1.0,<2",
+    "polars>=0.20,<2",
+    # RAG
+    "chromadb>=0.5,<1",
+    "sentence-transformers>=3.0,<4",
+    "mitreattack-python>=3.0,<4",
+    # Report
+    "jinja2>=3.1,<4",
+    # Tracing (optional)
+    "langfuse>=2.0,<4",
+    # Utilities
+    "networkx>=3.2,<4",
+    "python-dateutil>=2.9",
+    "requests>=2.31",
+    "tenacity>=8.3",              # retry with backoff for live enrichers
+    "click>=8.1,<9",              # CLI
+    "rich>=13,<15",               # CLI output
+]
+
+[project.optional-dependencies]
+pdf = ["weasyprint>=62"]
+dev = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "ruff>=0.4",
+    "mypy>=1.10",
+    "types-requests",
+    "types-python-dateutil",
+    "groq>=0.9,<1",               # included so mypy can check groq types
+]
+
+[project.scripts]
+sentinelai = "sentinelai.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["sentinelai"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+select = ["E", "F", "I", "UP", "B", "SIM", "ANN"]
+ignore = ["ANN101", "ANN102", "ANN401"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true

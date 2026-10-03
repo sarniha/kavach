@@ -1,0 +1,102 @@
+﻿# ─────────────────────────────────────────────────────────────────────────────
+# SentinelAI — .gitignore
+# ─────────────────────────────────────────────────────────────────────────────
+
+# ── Secrets & environment ─────────────────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+*.key
+*.pem
+*.secret
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+MANIFEST
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+.venv/
+.venv311/
+venv/
+env/
+ENV/
+.python-version
+
+# ── uv ────────────────────────────────────────────────────────────────────────
+# Keep uv.lock committed (reproducible installs), but ignore cache
+.uv/
+
+# ── pytest ────────────────────────────────────────────────────────────────────
+.pytest_cache/
+.cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# ── mypy ─────────────────────────────────────────────────────────────────────
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ── ruff ─────────────────────────────────────────────────────────────────────
+.ruff_cache/
+
+# ── DuckDB / data files ───────────────────────────────────────────────────────
+*.duckdb
+*.duckdb.wal
+data/intel/
+data/cache/
+
+# ── ChromaDB / vector store ───────────────────────────────────────────────────
+rag/chroma_store/
+*.chroma/
+chroma.sqlite3
+
+# ── Model weights / embeddings ────────────────────────────────────────────────
+*.bin
+*.pt
+*.safetensors
+*.onnx
+sentence-transformers/
+models/
+
+# ── Generated reports & traces ────────────────────────────────────────────────
+output/
+reports/
+traces/
+*.report.md
+*.trace.json
+feedback/*.json
+
+# ── Logs ─────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── IDEs ─────────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Packaging / distribution ─────────────────────────────────────────────────
+*.whl
+*.tar.gz

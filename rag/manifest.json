@@ -1,0 +1,45 @@
+{
+  "manifest_version": "1.0.0",
+  "generated_at": "2024-06-01T00:00:00Z",
+  "corpora": {
+    "mitre": {
+      "name": "MITRE ATT&CK Enterprise Techniques",
+      "count": 11,
+      "seed_path": "rag/seed_data/mitre/seed_mitre.json",
+      "vector_collection": "mitre"
+    },
+    "ioc": {
+      "name": "Normalized Indicators of Compromise",
+      "count": 7,
+      "seed_path": "rag/seed_data/iocs/seed_iocs.json",
+      "vector_collection": null,
+      "exact_store": "duckdb.iocs"
+    },
+    "cve": {
+      "name": "Common Vulnerabilities and Exposures",
+      "count": 4,
+      "seed_path": "rag/seed_data/cves/seed_cves.json",
+      "vector_collection": "cves",
+      "exact_store": "duckdb.cves"
+    },
+    "malware": {
+      "name": "Malware Families and Tools",
+      "count": 4,
+      "seed_path": "rag/seed_data/malware/seed_malware.json",
+      "vector_collection": "malware"
+    },
+    "pattern": {
+      "name": "Curated Attack Pattern Playbooks",
+      "count": 7,
+      "seed_path": "rag/seed_data/patterns",
+      "vector_collection": "patterns"
+    }
+  },
+  "relations": [
+    "parent_of",
+    "used_by",
+    "maps_to",
+    "associated_with",
+    "exploited_via"
+  ]
+}
